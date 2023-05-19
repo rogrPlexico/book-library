@@ -2,24 +2,26 @@
 let myLibrary = [];
 
 // Book constructor
-function Book(title, author, pages, read) {
-	this.title = title;
-	this.author = author;
-	this.pages = pages;
-	this.read = read;
-}
+class Book {
+	constructor(title, author, pages, read) {
+		this.title = title;
+		this.author = author;
+		this.pages = pages;
+		this.read = read;
+	}
 
-// function to print book info in readable sentence on Book.prototype
-Book.prototype.info = function () {
-	//allows to use a truthy/falsy value or yes/no for a Book's 'read' property. Converts to a readable value
-	if (!this.read || this.read == 'no') {
-		this.haveRead = "have not";
-	} else {
-		this.haveRead = "have";
+	//print book info as readable string
+	info() {
+		//allows to use a truthy/falsy value or yes/no for a Book's 'read' property. Converts to a readable value
+		if (!this.read || this.read == 'no') {
+			this.haveRead = "have not";
+		} else {
+			this.haveRead = "have";
+		};
+	
+		return `You ${this.haveRead} read the ${this.pages} pages long book "${this.title}" by ${this.author}.`;
 	};
-
-	return `You ${this.haveRead} read the ${this.pages} pages long book "${this.title}" by ${this.author}.`;
-};
+}
 
 // adds a new book to the myLibrary array
 function addBookToLibrary(title, author, pages, read) {
